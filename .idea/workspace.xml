@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3752e4a0-034f-4f3d-9bab-3d2ff0730651" name="Changes" comment="No Readme">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3752e4a0-034f-4f3d-9bab-3d2ff0730651" name="Changes" comment="Change" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +26,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;InitialProject&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/bibek/Documents/Project/KaligandakiSuppliers/PWA/KaligandakiSuppliers/app&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -66,7 +64,7 @@
       <workItem from="1754606552685" duration="566000" />
       <workItem from="1755196318940" duration="3322000" />
       <workItem from="1755223828545" duration="754000" />
-      <workItem from="1755333413760" duration="370000" />
+      <workItem from="1755333413760" duration="2975000" />
     </task>
     <task id="LOCAL-00001" summary="PageLayoutAndStyles">
       <option name="closed" value="true" />
@@ -92,7 +90,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755222721341</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Change">
+      <option name="closed" value="true" />
+      <created>1755334177117</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1755334177117</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +115,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="InitialProject" />
                       </list>
                     </value>
                   </entry>
@@ -124,7 +130,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="PageLayoutAndStyles" />
     <MESSAGE value="No Readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="No Readme" />
+    <MESSAGE value="Change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
