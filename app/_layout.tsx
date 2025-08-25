@@ -3,7 +3,7 @@ import {Stack, Tabs} from "expo-router";
 export default function RootLayout() {
   return (
       // <Tabs>
-      //   <Tabs.Screen name="index" options={{ headerShown: false }} />
+      //   {/*<Tabs.Screen name="index" options={{ headerShown: false }} />*/}
       //   <Tabs.Screen name={"Login"} options={{ headerShown: false }} />
       //   <Tabs.Screen name={"Register"} options={{ headerShown: false }} />
       //   <Tabs.Screen name={"Dashboard"} options={{ headerShown: false }} />

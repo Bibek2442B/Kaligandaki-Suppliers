@@ -97,6 +97,7 @@ export default function Login() {
         <Text style={styles.text}>Not Registered Yet?</Text>
         <Link href={"/Register"}><Text style={[styles.text, styles.link]}>Register</Text></Link>
         {error==='Please verify your email address' && <Text style={{color: 'red'}}>Please verify your email address</Text>}
+        <Link href={"/Dashboard"}><Text style={[styles.text, styles.link]}>Dashboard</Text></Link>
       </SafeAreaView>
     </SafeAreaProvider>
 
