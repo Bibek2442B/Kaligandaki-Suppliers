@@ -2,7 +2,7 @@ import {Text, StyleSheet, TextInput, TouchableOpacity} from "react-native";
 // import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {useEffect, useState} from "react";
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
-import {signInWithEmailAndPassword} from "firebase/auth";
+import {sendPasswordResetEmail, signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "@/firebase.config";
 import {Link} from "expo-router";
 
@@ -14,6 +14,27 @@ export default function Login() {
   useEffect(() => {
     setError('');
   },[email,password]);
+
+  const handlePasswordReset = async () => {
+    if (!email) {
+      setError("Email is required");
+      return;
+    }
+    try{
+      await sendPasswordResetEmail(auth, email);
+    }
+    catch(error)  {
+        // @ts-ignore
+      switch (error.code) {
+          case 'auth/invalid-email':
+            setError('Invalid email address');
+            break;
+            default:
+              setError("Error sending password reset");
+        }
+        console.error("Error sending password reset:", error);
+      };
+  }
 
   const handleLoginButton = async() => {
     if (!email || !password) {
@@ -30,6 +51,7 @@ export default function Login() {
       }
       setEmail('');
       setPassword('');
+      alert("Login Successful!")
 
     }catch (error) {
       //@ts-ignore
@@ -49,8 +71,12 @@ export default function Login() {
         case 'auth/missing-password':
           setError('Password is required');
           break;
+          case 'auth/invalid-credential':
+            setError('Invalid credential');
+            break;
         default:
           setError('An error occurred during login');
+          console.error("Error during login:", error);
       }
     }
 
@@ -84,7 +110,7 @@ export default function Login() {
         />
         <TouchableOpacity
           style={styles.button}
-          onPress={() => {}}
+          onPress={handleLoginButton}
         >
           <Text style={styles.text}>Login</Text>
         </TouchableOpacity>
@@ -96,8 +122,10 @@ export default function Login() {
         {/*</TouchableOpacity>*/}
         <Text style={styles.text}>Not Registered Yet?</Text>
         <Link href={"/Register"}><Text style={[styles.text, styles.link]}>Register</Text></Link>
+        <Text style={styles.text}>Forgot Password</Text>
+        <TouchableOpacity onPress={handlePasswordReset}><Text style={[styles.text, styles.link]}>Reset Password</Text></TouchableOpacity>
         {error==='Please verify your email address' && <Text style={{color: 'red'}}>Please verify your email address</Text>}
-        <Link href={"/Dashboard"}><Text style={[styles.text, styles.link]}>Dashboard</Text></Link>
+        {/*<Link href={"/Dashboard"}><Text style={[styles.text, styles.link]}>Dashboard</Text></Link>*/}
       </SafeAreaView>
     </SafeAreaProvider>
 
