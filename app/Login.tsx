@@ -1,4 +1,4 @@
-import {Text, StyleSheet, TextInput, TouchableOpacity} from "react-native";
+import {Text, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator} from "react-native";
 // import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {useEffect, useState} from "react";
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
@@ -10,12 +10,14 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setError('');
   },[email,password]);
 
   const handlePasswordReset = async () => {
+    setLoading(true);
     if (!email) {
       setError("Email is required");
       return;
@@ -34,11 +36,14 @@ export default function Login() {
         }
         console.error("Error sending password reset:", error);
       };
+    setLoading(false);
   }
 
   const handleLoginButton = async() => {
+    setLoading(true);
     if (!email || !password) {
       setError("Input fields are required");
+      setLoading(false);
       return;
     }
 
@@ -47,6 +52,7 @@ export default function Login() {
       if(!userCredentials.user.emailVerified){
         await auth.signOut();
         setError('Please verify your email address');
+        setLoading(false);
         return;
       }
       setEmail('');
@@ -78,8 +84,9 @@ export default function Login() {
           setError('An error occurred during login');
           console.error("Error during login:", error);
       }
+    }finally{
+      setLoading(false);
     }
-
   }
   // @ts-ignore
   return(
@@ -108,22 +115,24 @@ export default function Login() {
           value={password}
           onChangeText={setPassword}
         />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleLoginButton}
-        >
-          <Text style={styles.text}>Login</Text>
-        </TouchableOpacity>
-        {/*<Text style={styles.lightText}>Or</Text>*/}
-        {/*<Text style={styles.lightText}>Continue With</Text>*/}
-        {/*<TouchableOpacity style={styles.googleButton}>*/}
-        {/*    <MaterialCommunityIcons name="google" size={24} color="#fff" />*/}
-        {/*    <Text style={styles.buttonText}>Google</Text>*/}
-        {/*</TouchableOpacity>*/}
-        <Text style={styles.text}>Not Registered Yet?</Text>
-        <Link href={"/Register"}><Text style={[styles.text, styles.link]}>Register</Text></Link>
-        <Text style={styles.text}>Forgot Password</Text>
-        <TouchableOpacity onPress={handlePasswordReset}><Text style={[styles.text, styles.link]}>Reset Password</Text></TouchableOpacity>
+        {
+          loading? (
+              <ActivityIndicator size="large" />
+          ) :(
+            <>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={handleLoginButton}
+              >
+                <Text style={styles.text}>Login</Text>
+              </TouchableOpacity>
+              <Text style={styles.text}>Not Registered Yet?</Text>
+              <Link href={"/Register"}><Text style={[styles.text, styles.link]}>Register</Text></Link>
+              <Text style={styles.text}>Forgot Password</Text>
+              <TouchableOpacity onPress={handlePasswordReset}><Text style={[styles.text, styles.link]}>Reset Password</Text></TouchableOpacity>
+            </>
+          )
+      }
         {error==='Please verify your email address' && <Text style={{color: 'red'}}>Please verify your email address</Text>}
         {/*<Link href={"/Dashboard"}><Text style={[styles.text, styles.link]}>Dashboard</Text></Link>*/}
       </SafeAreaView>

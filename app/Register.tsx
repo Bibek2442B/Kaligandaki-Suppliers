@@ -1,4 +1,4 @@
-import {Text, StyleSheet, TextInput, TouchableOpacity} from "react-native";
+import {Text, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator} from "react-native";
 // import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {useEffect, useState} from "react";
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
@@ -13,10 +13,12 @@ export default function Register() {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [registerSuccess, setRegisterSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setRegisterSuccess(false);
     setErrorMsg("");
   },[email,password, repeatPassword]);
+
   const handleRegisterButton = async() => {
     if(!(password === repeatPassword)){
       setErrorMsg("The passwords do not match");
@@ -31,6 +33,7 @@ export default function Register() {
       role: "user",
     }
     try {
+      setLoading(true);
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const uid = userCredential.user.uid;
       await sendEmailVerification(userCredential.user);
@@ -39,6 +42,8 @@ export default function Register() {
       setPassword("");
       setRepeatPassword("");
       setRegisterSuccess(true);
+      setLoading(false);
+      alert("Successfully registered! Please verify your email and login.");
     }catch (error) {
       console.error("Error during registration:", error);
       // @ts-ignore
@@ -64,8 +69,11 @@ export default function Register() {
         default:
           setErrorMsg("Unexpected Error!!!!!! Please Contact Support");
       }
+    }finally {
+      setLoading(false);
     }
     }
+
   return(
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
@@ -96,25 +104,25 @@ export default function Register() {
         <TextInput
           style={styles.input}
           secureTextEntry={true}
-          placeholder={"Enter your password "}
+          placeholder={"Confrim Password"}
           placeholderTextColor={"gray"}
           value={repeatPassword}
           onChangeText={setRepeatPassword}
         />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleRegisterButton}
-        >
-          <Text style={styles.text}>Register</Text>
-        </TouchableOpacity>
-        {/*<Text style={styles.lightText}>Or</Text>*/}
-        {/*<Text style={styles.lightText}>Continue With</Text>*/}
-        {/*<TouchableOpacity style={styles.googleButton}>*/}
-        {/*  <MaterialCommunityIcons name="google" size={24} color="#fff" />*/}
-        {/*  <Text style={styles.buttonText}>Google</Text>*/}
-        {/*</TouchableOpacity>*/}
-        <Text style={styles.text}>Already Registered?</Text>
-        <Link href={"/Login"}><Text style={[styles.text, styles.link]}>Login</Text></Link>
+        {loading?
+            <ActivityIndicator size="large"/>
+            :
+            <>
+              <TouchableOpacity
+                  style={styles.button}
+                  onPress={handleRegisterButton}
+              >
+                <Text style={styles.text}>Register</Text>
+              </TouchableOpacity>
+              <Text style={styles.text}>Already Registered?</Text>
+              <Link href={"/Login"}><Text style={[styles.text, styles.link]}>Login</Text></Link>
+            </>
+            }
       </SafeAreaView>
     </SafeAreaProvider>
 
