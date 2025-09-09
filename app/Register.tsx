@@ -3,7 +3,7 @@ import {Text, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator} from "
 import {useEffect, useState} from "react";
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
 import {auth, db} from "@/firebase.config";
-import {createUserWithEmailAndPassword, sendEmailVerification} from "firebase/auth";
+import {createUserWithEmailAndPassword, sendEmailVerification, User} from "firebase/auth";
 import {doc, setDoc} from "firebase/firestore";
 import {Link} from "expo-router";
 
@@ -14,10 +14,11 @@ export default function Register() {
   const [registerSuccess, setRegisterSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
   useEffect(() => {
     setRegisterSuccess(false);
     setErrorMsg("");
-  },[email,password, repeatPassword]);
+  },[email, password, repeatPassword]);
 
   const handleRegisterButton = async() => {
     if(!(password === repeatPassword)){
@@ -120,7 +121,7 @@ export default function Register() {
                 <Text style={styles.text}>Register</Text>
               </TouchableOpacity>
               <Text style={styles.text}>Already Registered?</Text>
-              <Link href={"/Login"}><Text style={[styles.text, styles.link]}>Login</Text></Link>
+              <Link dismissTo href={"/Login"}><Text style={[styles.text, styles.link]}>Login</Text></Link>
             </>
             }
       </SafeAreaView>

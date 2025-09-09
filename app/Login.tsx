@@ -1,16 +1,17 @@
 import {Text, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator} from "react-native";
-// import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {useEffect, useState} from "react";
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
-import {sendPasswordResetEmail, signInWithEmailAndPassword} from "firebase/auth";
+import {sendPasswordResetEmail, signInWithEmailAndPassword, User} from "firebase/auth";
 import {auth} from "@/firebase.config";
 import {Link} from "expo-router";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     setError('');
@@ -55,10 +56,9 @@ export default function Login() {
         setLoading(false);
         return;
       }
+      setUser(userCredentials.user);
       setEmail('');
       setPassword('');
-      alert("Login Successful!")
-
     }catch (error) {
       //@ts-ignore
       switch (error.code) {
@@ -134,7 +134,6 @@ export default function Login() {
           )
       }
         {error==='Please verify your email address' && <Text style={{color: 'red'}}>Please verify your email address</Text>}
-        {/*<Link href={"/Dashboard"}><Text style={[styles.text, styles.link]}>Dashboard</Text></Link>*/}
       </SafeAreaView>
     </SafeAreaProvider>
 

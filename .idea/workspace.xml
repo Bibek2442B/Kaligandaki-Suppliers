@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3752e4a0-034f-4f3d-9bab-3d2ff0730651" name="Changes" comment="No Readme">
+    <list default="true" id="3752e4a0-034f-4f3d-9bab-3d2ff0730651" name="Changes" comment="Activity Indicator In Login and Register">
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/Profile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/AddCustomer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/AddCustomer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/Dashboard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/Register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/RegisterSale.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/RegisterSale.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +59,7 @@
       <recent name="$PROJECT_DIR$/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IPB\MultiplatformDevelopment\Project\KaligandakiSuppliers\Kaligandaki-Suppliers\app\(tabs)" />
       <recent name="$PROJECT_DIR$/app/(tabs)" />
     </key>
   </component>
@@ -83,7 +90,13 @@
       <workItem from="1756543542468" duration="3997000" />
       <workItem from="1757085359896" duration="3344000" />
       <workItem from="1757114387320" duration="1356000" />
-      <workItem from="1757149315418" duration="1415000" />
+      <workItem from="1757149315418" duration="2652000" />
+      <workItem from="1757155797528" duration="642000" />
+      <workItem from="1757179230235" duration="1059000" />
+      <workItem from="1757205381626" duration="2504000" />
+      <workItem from="1757242764832" duration="2798000" />
+      <workItem from="1757247380101" duration="1995000" />
+      <workItem from="1757374747451" duration="1919000" />
     </task>
     <task id="LOCAL-00001" summary="PageLayoutAndStyles">
       <option name="closed" value="true" />
@@ -117,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756138308972</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Activity Indicator In Login and Register">
+      <option name="closed" value="true" />
+      <created>1757151589751</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1757151589751</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,7 +171,8 @@
     <MESSAGE value="PageLayoutAndStyles" />
     <MESSAGE value="No Readme" />
     <MESSAGE value="RegisterSale Start" />
-    <option name="LAST_COMMIT_MESSAGE" value="RegisterSale Start" />
+    <MESSAGE value="Activity Indicator In Login and Register" />
+    <option name="LAST_COMMIT_MESSAGE" value="Activity Indicator In Login and Register" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

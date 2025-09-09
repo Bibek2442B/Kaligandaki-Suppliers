@@ -1,7 +1,11 @@
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
 import {StyleSheet, Text, TextInput, TouchableOpacity} from "react-native";
+import {auth} from '@/firebase.config';
 
 export default function AddCustomer() {
+    const handleLogOut = async () => {
+        await auth.signOut();
+    }
     return(
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
@@ -31,6 +35,10 @@ export default function AddCustomer() {
                     onPress={() => {}}
                 >
                     <Text style={styles.buttonText}>Add Customer</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.button} onPress={handleLogOut}>
+                    <Text style={styles.buttonText}>Logout</Text>
                 </TouchableOpacity>
             </SafeAreaView>
         </SafeAreaProvider>
